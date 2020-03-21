@@ -88,8 +88,8 @@ const contactInfo = [`Cynde ctorry0@macromedia.com`, ``];
 console.log(contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called unisWithUni that contains them all. This will be an array of objects. Log the result. */
-const unisWithUni = [graduates.university.includes('uni')];
-console.log(unisWithUni);
+// const unisWithUni = [graduates.university.includes('uni')];
+// console.log(unisWithUni);
 
 
 // ==== ADVANCED Array Methods ====
@@ -112,19 +112,37 @@ const zooAnimals = [
 /* Request 1: .forEach()
 
 The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
-
-*/
-const displayNames = [];
-console.log(displayNames);
+function getFullNames(runners) {
+  const names = [];
+  runners.forEach(runner => names.push(`${runner.last_name}, ${runner.first_name}`));
+  return names;
+}
+*/const names = animals => {
+  const displayNames = [];
+  animals.forEach(animal => displayNames.push(`Name: ${animal.animal_name}, Scientific: ${animal.scientific_name}`));
+    return displayNames;
+}
+console.log(names(zooAnimals));
 
 /* Request 2: .map()
 
 The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
 
-*/
+// */
+// function firstNamesAllCaps(runners) {
+//   const capName = runners.map(name => {
+//     return name.first_name.toUpperCase();
+//   });
+//   return capName;
+// }
+const lowerCase = animals => {
+  const lower = animals.map(name => {
+    return name.animal_name.toLowerCase();
+  });
+  return lower;
+}
 
-const lowCaseAnimalNames = [];
-console.log(lowCaseAnimalNames);
+console.log(lowerCase(zooAnimals));
 
 /* Request 3: .filter() 
 
